@@ -1,0 +1,258 @@
+
+/*----navigation bar along top ---*/
+
+#beta {
+	display:none;
+}
+ .notice, .alert {
+ 	height: 0px;
+ 	}
+ #modal-on {
+  display: none;
+}
+#modal-off {
+  display: block;
+}
+.span3 img, #usercontainer{
+	float:left;
+	margin:5px;
+	padding-top: 30px;
+}
+#logo-side {
+	margin-top: -45px;
+}
+.taskbox.lightblue {
+	background-color: #ffffff;
+}
+.taskbox {
+    border-radius: 0px;
+    box-shadow: none;
+    float: left;
+    min-height: 300px;
+    position: relative;
+}
+.map-butt {
+    margin: 10px;
+}
+.tab-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#map {
+    border-radius: 0px;
+    margin: 5px;
+    height: 100px;
+}
+/*-----------------------------prepared.ly logo ---*/
+#logo-wrapper {
+	height:31px;
+	width:180px;
+	position: relative;
+	top: -40px;
+	left: -5px;
+	z-index:1;
+}
+.navbar img{
+    margin: 8px;
+    padding-left:0px;
+}
+
+#logo {
+	background: url('preparedly-nav-blue.png') no-repeat;
+	width:180px; 
+	height:31px;
+}
+#logo a{
+	height:31px;
+	width:180px;
+}
+/*-----------------------------main-container ---*/
+#main {
+	padding:40px 15px 15px;
+}
+#main-wrap {
+	margin: 0px;
+}
+.container {
+	  *zoom: 1;
+    width: auto;
+}
+
+/*---map detail ---*/
+#map-main {
+	width:90%;
+	position:inherit;
+	top:-30px;
+}
+.contentbox {
+	margin: 0px;
+	padding: 0px;
+}
+#map-detail {
+	width:100%; 
+	border: none;
+	float: right;
+}
+#map-content-top {
+	width:100%;
+	height:53px;
+}
+
+#address-map {
+    display: block;
+    float: left;
+    position: relative;
+    width: 411px;
+}
+.address {
+	width:300px;
+}
+.condition {
+	font-style: normal;
+	font-weight: 300;
+	text-align: left;
+	padding:5px;
+	vertical-align:top;
+	font-size: 14px;
+}
+.contentbox p {
+    height: auto;
+    overflow-y: inherit;
+}
+.task-butt .btn-group .btn:first-child {
+    margin-left: 0px;
+}
+.btn-group > .btn {
+    float: left;
+    margin: 5px;
+}
+.dash-tabs > .active > a, .dash-tabs > .active > a:hover {
+    height: 50px;
+}
+/*-------------------------------------------------about-page ---*/
+
+#about-main {
+    margin: 0px 0px;
+    padding: 0px 0px;
+    z-index:10;
+    position: relative;
+    top: 90px;
+    }
+#about-wrap {
+	background:url('blue-sky.png')repeat-x;	
+	height:300px;
+}
+
+.column-wrapper {
+	margin:0px;
+	padding:0px;
+}
+.column {
+	float:left;
+	width:90%;
+	position: relative;	
+}
+#space {
+    display: none;
+	}
+.column-wrapper h1{
+	font-size: 30px;
+	font-style: normal;
+	font-weight: 700;
+	color: #99CCCC;
+	text-align:center;
+	border-bottom:solid 1px #99CCCC;
+	line-height:50px;
+}
+.column-wrapper h3{
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 300;
+	color: #339999;
+	text-align:center;
+    top: -35px;
+    position: relative;
+    line-height:25px;
+}
+.subnav {
+    position: static;
+    top: auto;
+    z-index: auto;
+    width: auto;
+    height: auto;
+    background: #fff; /* whole background property since we use a background-image for gradient */
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+  }
+  .subnav .nav > li {
+    float: none;
+  }
+  .subnav .nav > li > a {
+    border: 0;
+  }
+  .subnav .nav > li + li > a {
+    border-top: 1px solid #e5e5e5;
+  }
+  .subnav .nav > li:first-child > a,
+  .subnav .nav > li:first-child > a:hover {
+      -webkit-border-radius: 4px 4px 0 0;
+         -moz-border-radius: 4px 4px 0 0;
+              border-radius: 4px 4px 0 0;
+  }
+  .subnav-fixed ul{
+  	position: relative;
+  	left:-201px;
+  	width:100%;
+  }
+
+.subnav, .subnav-fixed, .subnav .nav > li, .nav-pills ul, .nav ul {
+	position: static;
+	left:0px;
+	}
+.task-butt hr{
+	display: none;
+}
+.task-butt a{
+	color:ffffff;
+}
+.column-wrapper p, .column-wrapper h2 {
+	margin:5px;
+	padding:5px;
+	}
+.column-wrapper p{
+	/*height: 100px;*/
+	color:#ffffff;
+}
+.navbar-fixed-top {
+	z-index:100;
+}
+
+.column-wrapper h2{
+	font-weight: 700;
+	color:#ffffff;
+}
+.column-full {
+	width:100%;
+	float: left;
+}
+#skyline {	
+    display:none;
+	}		
+#about-green {
+	background: #336633;
+	height:1900px;
+}
+#green {
+	background:#336633;
+	top:-36px;
+	position:relative;
+	}
+
+
+/*------------------------------------------------footer stuff---*/
+#footer {
+    display:none;
+    }
+
+

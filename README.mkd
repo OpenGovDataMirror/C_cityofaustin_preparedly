@@ -1,0 +1,268 @@
+# prepared.ly 
+Join the community of fire-prepared Austinites. Wildfires are a real and ongoing threat, so it’s important to be in the know and get up to date real time information. Rally with your neighbors and work with your local firefighters to keep wildfires in the wild, and your home and neighborhood safe.
+
+## <a name="screenshots"></a>Screenshot
+![prepared.ly](https://img.skitch.com/20120516-brru1gdmjjuut2rn5ug9w25cnn.jpg "prepared.ly")
+
+## <a name="build"></a>Build Status
+[![Build Status](https://secure.travis-ci.org/codeforamerica/cfa_template.png?branch=master)][travis]
+
+[travis]: http://travis-ci.org/codeforamerica/cfa_template
+
+## <a name="dependencies"></a>Dependency Status
+[![Dependency Status](https://gemnasium.com/codeforamerica/cfa_template.png?travis)][gemnasium]
+
+[gemnasium]: https://gemnasium.com/codeforamerica/cfa_template
+
+## <a name="demo"></a>Demo
+You can see a running version of the application at
+[http://prepared.ly/][demo].
+
+[demo]: http://cfa_template.herokuapp.com/
+
+## <a name="installation"></a>Installation
+
+### <a name="system-requirements-installation"></a>System Requirements
+
+These are the basic requirements for installation using the directions below.
+
+#### <a name="mac-requirements"></a>Mac
+
+[HomeBrew][]
+
+[HomeBrew]: http://mxcl.github.com/homebrew/
+
+#### <a name="ubuntu-requirements"></a>Ubuntu
+
+These are covered in the installation directions.
+
+### <a name="mac-installation"></a>Mac Installation
+    $ brew install postgres
+    $ brew install postgis
+
+    # Create regular database user named `preparedly`, empty password
+    $ createuser -h localhost --pwprompt preparedly 
+
+    # Create superuser database user named `cfa`, empty password
+    $ createuser -h localhost --pwprompt --superuser cfa 
+
+    $ git clone git://github.com/codeforamerica/prepared.ly.git
+    $ cd prepared.ly 
+    $ bundle install
+    $ rake db:create
+    $ rake db:migrate
+
+### <a name="ubuntu-installation"></a>Ubuntu Installation
+
+These instructions assume that you have a working Ubuntu Installation.  These will take you from a basic Ubuntu installation to a working development environment.
+
+Run the following command to install dependencies on your system:
+
+    $ sudo apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion nodejs 
+
+This command installs all the necessary libraries needed for configuring Ruby Environment Manager, RVM, on your system specifically for Ruby.
+
+Install RVM, you can go [here](https://rvm.io//) to read more about it, but this is the minimal required.
+*Note:  This installs RVM just for the user that is logged in, this is the preferred method, please consult the RVM documentation if you would like to perform the installation differently.*
+
+    $ curl -L get.rvm.io | bash -s stable
+
+This command will need to be ran each time the shell is reopened.  To avoid doing so, please add this to your bashrc or bash_profile
+   
+    $ source ~/.rvm/scripts/rvm
+    
+    #Add this to your bashrc or bash_profile
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
+This installs ruby 1.9.3
+
+    $ rvm install 1.9.3
+
+Once completed, run the following command which makes ruby 1.9.3 the default ruby:
+
+    $ rvm --default use 1.9.3
+
+Now type:
+
+    $ ruby -v
+
+You should see:
+
+    ruby 1.9.3pXXX # XXX represents the current patch set
+
+Once this command completed you will have a working ruby environment.
+
+Prepared.ly uses Postgres with PostGIS as the database.  You will need to get those environments configured also.  here are the steps that are required.  The libpq-dev library is very important for building the ruby postgres gem.
+
+    $ sudo apt-get install python-software-properties
+
+    #Install postgres database:
+    $ sudo apt-get install postgresql-9.1 libpq-dev postgresql-contrib-9.1
+
+*Note:  If you would like a gui database manager, then use the following command:
+
+    $ sudo apt-get install pgadmin3
+
+
+Install PostGIS:
+
+    $ sudo apt-get install proj-bin postgresql-9.1-postgis
+
+Next you need to configure postgres to allow connections
+
+You will start by editing this file:
+
+/etc/postgresql/9.1/main/postgresql.conf
+
+You will need to go down the the **Connections and Authentication** section.
+
+Remove the # sign at this line:
+
+    #listen_addresses = 'localhost'
+
+You will also need to edit this file: 
+
+    /etc/postgresql/9.1/main/pg_hba.conf
+
+Go to the IPv4 section and add the following entry
+
+    # IPv4 local connections:
+    local   all             all                                     md5
+
+Restart the database after making the change
+
+    $ sudo /etc/init.d/postgresql restart
+
+
+Since the only user who can connect to a fresh install is the postgres user, here is how to create yourself a database account (which is in this case also a database superuser) with the same name as your login name and then create a password for the user: 
+
+    $ sudo -u postgres createuser --superuser $USER
+    $ sudo -u postgres psql
+
+    $ postgres=# \password $USER
+
+Read more [here](https://help.ubuntu.com/community/PostgreSQL).
+
+Now the basic environment is configured now it is time to install the application and its dependencies.
+
+To get the applicaiton do the following:
+
+    $ mkdir code
+    $ cd code
+    
+    #Clone from Github
+    $ git clone git://github.com/codeforamerica/prepared.ly.git
+
+    $ cd prepared.ly 
+
+    #Install dependencies
+    $ bundle install
+
+
+Create the database account:
+
+    # Create regular database user named 'preparedly, empty password
+    $ createuser -h localhost --pwprompt preparedly
+
+    # Create superuser database user named 'cfa', empty password
+    $ createuser -h localhost --pwprompt --superuser cfa
+
+Edit your database.yml.  
+
+You will need to edit the passwords for the acccounts and the *script_dir* for the postgis integration.  To do so 
+To find the scripts directory on ubuntu it is:
+
+    /usr/share/postgresql/9.1/contrib/postgis-1.5
+
+    #From prepared.ly directory
+    /config/database.yml
+
+
+Now it is time to create your database:
+
+    $ rake db:create
+    $ rake db:migrate
+
+Finally:
+
+    $ rails server
+
+Go here:  http://0.0.0.0:3000
+
+You should see the home page of the Prepared.ly application.
+
+## <a name="usage"></a>Usage
+    rails server
+
+## <a name="contributing"></a>Contributing
+In the spirit of [free software][free-sw], **everyone** is encouraged to help
+improve this project.
+
+[free-sw]: http://www.fsf.org/licensing/essays/free-sw.html
+
+Here are some ways *you* can contribute:
+
+* by using alpha, beta, and prerelease versions
+* by reporting bugs
+* by suggesting new features
+* by [translating to a new language][locales]
+* by writing or editing documentation
+* by writing specifications
+* by writing code (**no patch is too small**: fix typos, add comments, clean up
+  inconsistent whitespace)
+* by refactoring code
+* by closing [issues][]
+* by reviewing patches
+* [financially][]
+
+[locales]: https://github.com/codeforamerica/cfa_template/tree/master/config/locales
+[issues]: https://github.com/codeforamerica/cfa_template/issues
+[financially]: https://secure.codeforamerica.org/page/contribute
+
+## <a name="issues"></a>Submitting an Issue
+We use the [GitHub issue tracker][issues] to track bugs and features. Before
+submitting a bug report or feature request, check to make sure it hasn't
+already been submitted. You can indicate support for an existing issue by
+voting it up. When submitting a bug report, please include a [Gist][] that
+includes a stack trace and any details that may be necessary to reproduce the
+bug, including your gem version, Ruby version, and operating system. Ideally, a
+bug report should include a pull request with failing specs.
+
+[gist]: https://gist.github.com/
+
+## <a name="pulls"></a>Submitting a Pull Request
+1. Fork the project.
+2. Create a topic branch.
+3. Implement your feature or bug fix.
+4. Add tests for your feature or bug fix.
+5. Run `bundle exec rake test`. If your changes are not 100% covered, go back
+   to step 4.
+6. Commit and push your changes.
+7. Submit a pull request. Please do not include changes to the gemspec or
+   version file. (If you want to create your own version for some reason,
+   please do so in a separate commit.)
+
+## <a name="versions"></a>Supported Ruby Versions
+This library aims to support and is [tested against][travis] the following Ruby
+implementations:
+
+* Ruby 1.9.3
+
+If something doesn't work on one of these interpreters, it should be considered
+a bug.
+
+This library may inadvertently work (or seem to work) on other Ruby
+implementations, however support will only be provided for the versions listed
+above.
+
+If you would like this library to support another Ruby version, you may
+volunteer to be a maintainer. Being a maintainer entails making sure all tests
+run and pass on that implementation. When something breaks on your
+implementation, you will be personally responsible for providing patches in a
+timely fashion. If critical issues for a particular implementation exist at the
+time of a major release, support for that Ruby version may be dropped.
+
+## <a name="copyright"></a>Copyright
+Copyright (c) 2011 Code for America. See [LICENSE][] for details.
+
+[license]: https://github.com/codeforamerica/prepared.ly/blob/master/LICENSE.mkd

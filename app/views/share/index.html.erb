@@ -1,0 +1,83 @@
+<br>
+<!-- Get started -->
+<h2>
+Thanks for signing up! You can share Prepared.ly using the links below, use the resources to learn more about wildfire prevention or view your Prepared.ly dashboard to get started.
+</h2>
+<br />
+<div class = 'detail-col'>
+<div class="fb-like" data-href="http://www.prepared.ly/" ref="<%= @share_code %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-action="recommend"></div>
+<br />
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.prepared.ly/?ref=<%= @share_code %>" data-text="Make staying prepared fun and easy! Check out the site" data-via="ATXPreparedly" data-hashtags="cfaATX">Tweet</a>
+<br />
+<span id="tumblr_button_abc123"></span>
+<br />
+Share Link: <input size=35 value="http://www.prepared.ly/?ref=<%= @share_code %>">
+<br/>
+<br/>
+</div>
+
+<h4>View your Prepared.ly dashboard</h4>
+<br />
+<%= link_to '<i class="icon-fire icon-white"></i> Go! >>'.html_safe, root_path, :class => 'btn-large btn-success btn' %>
+
+<% content_for :javascript_yield do %>
+
+  
+  <!-- Tumblr Setup-->
+  <script type="text/javascript">
+      var tumblr_link_url = "http://www.prepared.ly/?ref=<%= @share_code %>";
+      var tumblr_link_name = "prepared.ly";
+      var tumblr_link_description = "Make staying prepared fun and easy!";
+  </script>
+
+  <script type="text/javascript">
+      var tumblr_button = document.createElement("a");
+      tumblr_button.setAttribute("href", "http://www.tumblr.com/share/link?url=" + encodeURIComponent(tumblr_link_url) + "&name=" + encodeURIComponent(tumblr_link_name) + "&description=" + encodeURIComponent(tumblr_link_description));
+      tumblr_button.setAttribute("title", "Share on Tumblr");
+      tumblr_button.setAttribute("style", "display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url('http://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;");
+      tumblr_button.innerHTML = "Share on Tumblr";
+      document.getElementById("tumblr_button_abc123").appendChild(tumblr_button);
+  </script>
+
+  <!-- FB Setup-->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=366357736748301";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Twitter Setup-->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<% end %>
+<br>
+
+<div class="column-wrapper">   
+    <div class="column-full">
+        
+    </div><!--end column-full-->
+    <div class="column-full reg">
+       <div class="column reg">
+            <h2>What is the <a href="http://wildlandfirersg.org/Learn/content.cfm?ItemNumber=646&navItemNumber=505">Wildland Urban Interface?</a></h2>
+            <p>A <a href="http://wildlandfirersg.org/Learn/content.cfm?ItemNumber=646&navItemNumber=505">wildland–urban interface</a> refers to the zone of transition between unoccupied land and human development. Communities that are within 0.5 miles (0.80 km) of the zone may also be included. These lands and communities adjacent to and surrounded by wildlands are at risk of wildfires.</p>
+            <h2><a href="http://www.austinhsem.com/clients/2333/429471.pdf">Ready, Set, Go!</a></h2>
+            <p>Austin and the Texas Forest Service (check) have produced the <a href="http://www.austinhsem.com/clients/2333/429471.pdf">Ready, Set, Go!</a> guide to help you prepare and respond during emergency situations. Read the <a href="http://www.austinhsem.com/clients/2333/429471.pdf">Ready, Set, Go!</a> PDF and make sure you've taken steps to avoid and prepare for emergencies. 
+            </p>
+            <h2>Local Conditions</h2>
+            <p>Prepared.ly is meant to help you remain proactive by sending periodic, unobstrusive notifications. Stay tuned for alerts from AFD when there is a high wildfire risk due to weather or other circumstances, and for reminders of simple ways to remain prepared. You can set your alert preferences <a href="http://www.prepared.ly/users/edit">here</a>.
+            </p>  
+        </div>
+        <div class="column reg">
+            <h2>Texas Forest Service <a href="http://www.texaswildfirerisk.com">TxWRAP</a></h2>
+            <p>Find out more about locations in the Wildland Urban Interface, review detailed landscape characteristics, historical weather patterns and more.</p>
+            <h2>Ready, Set, Go! <a href="http://www.youtube.com/watch?v=MN8Kre62nz4">How To video</a></h2>
+            <p>Watch a <a href="http://www.youtube.com/watch?v=1EtXNUeBG8M">short introductory video</a> illustrating the devastating speed of wildfires driven by winds and flying embers.
+            <h2>Contact AFD</h2>
+              <p>Wildfire Prevention expert Lt. Josh Portie and other specialists at AFD are available to answer brief questions and coordinate on-site & neighborhood visits in the Austin area. Send an email <a href="../#contact-section">here</a>.</p>
+        </div>
+    </div><!--end column-full-->    
+</div> <!--end column wrapper-->
+
+

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p><%= image_tag attachments['preparedly-red.png'].url -%></p>
+    <p><h2>A Prepared.ly user just submitted a question:</h2></p>
+    <ol>
+      <li><p>Name: <%= @contact.name %></li>
+      <li><p>Email: <%= @contact.email %></li>
+      <li><p>Request type: <%= @contact.contact_type %></li>
+      <li><p>Message: <%= @contact.body %></li>
+    </ol>
+
+  </body>
+</html>

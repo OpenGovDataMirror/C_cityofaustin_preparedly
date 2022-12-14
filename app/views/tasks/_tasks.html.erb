@@ -1,0 +1,43 @@
+<div id="retask">
+    <div class="contentbox contentbox-main">
+        <h1><%= @random.task %></h1>
+        <p><%= @random.detail %></p>   
+    </div>
+    <div class="container-fluid">
+        <div class="span6">
+            <div class="triangle-top"></div>            
+            <div class="triangle-top-box">
+                <h2>On the scale, this is:</h2>
+                <p><%= @random.difficulty %></p>
+                <div class ="<%= @random.difficulty %>"></div>
+            </div>        
+        </div>   
+        <div class="span6">
+            <div class="triangle-top">
+            </div>       
+            <div class="triangle-top-box">                    
+                <h2>Why is this important?</h2>
+                <p><%= @random.fact %></p>
+            </div>
+        </div>    
+    </div> 
+    
+    <div class="contentbox">         
+        <h2>Comments</h2>
+        <p>Do you know of a product that helps with this task? Run into any trouble while doing it? Easier than expected? Have a related suggestion? Please let us know in the comments.</p>
+        <%= form_for([@random, @random.comments.build], :id => 'new_comment') do |f| %>
+            <div class="field">
+              <%= f.label :name %>
+              <%= f.text_field :name, :id => 'new_comment_name' %>
+            </div>  
+            <div class="field">
+              <%= f.label :comment %>
+              <%= f.text_area :body, :id => 'new_comment_body', :cols => '100', :rows => '100' %>
+            </div>
+            <%= f.submit 'Add your knowledge!', :class => 'btn-large btn-info btn' %>      
+        <% end %>
+        <div id="comments">
+            <!-- comments will load in here via ajax -->
+        </div>  
+    </div>
+</div>

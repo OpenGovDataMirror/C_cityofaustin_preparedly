@@ -1,0 +1,78 @@
+<% content_for :stylesheet_yield do %>
+  <%= stylesheet_link_tag "leaflet.css" %>
+  <%= stylesheet_link_tag "leaflet.ie.css" %>
+<% end %>
+  
+  <div>
+    <div class="controls">
+        <div class="input-append">
+            <%= form_tag("/map", :id => "fetchaddress", :method=> "post") do%>
+                <%= text_field_tag(:q, nil,  :value => @address_str,  :class => 'form-inline input-xx-large') %><%= submit_tag("Go", :class => 'btn btn-info btn') %>
+            <% end %>
+        </div>
+    </div>
+<!-- div that will display the map that is set using below javascript -->
+   <div id="mapinfo"> 
+
+    <%= render :partial => 'map/mapinfo' %>
+   </div>
+
+    <% unless user_signed_in? %>
+        <div class="detail-col">
+          <h4>
+              Join prepared.ly &mdash; it's free!
+          </h4>
+            <a href="users/sign_up"><button class="btn btn-info btn-large"> <i class="icon-user icon-white"></i> sign up now </button></a>
+         </div>   
+     <% end %>
+    <div class="detail-col">
+          <h4>
+              Want to start getting more prepared <em>right now</em>?
+          </h4>
+            <a href="/tasks"><button class="btn btn-success btn-large"> <i class="icon-fire icon-white"></i> Get started! </button></a>
+    </div>   
+  </div>
+</div>  
+<!--
+  </div>-->
+  
+</div>
+<% content_for :javascript_yield do %>
+  <!-- scripts -->
+  <%= javascript_include_tag "leaflet.js" %>
+  <%= javascript_include_tag "wax.leaflet.min.js" %>
+  <%= javascript_include_tag "cartodb-leaflet.js" %>
+
+
+ <script type="text/javascript">
+  $(document).ready(function() {
+    $("#map-pop")
+     .popover({/*trigger: 'manual'*/})
+     .click(function(e){
+       e.preventDefault();
+       $('#map-pop').popover('show');
+    });
+
+    $("#stations-pop")
+     .popover({/*trigger: 'manual'*/})
+     .click(function(e){
+       e.preventDefault();
+       ('#stations-pop').popover('show');
+    });
+
+    $("#warnings-trigger").click(function(e){
+      $("#warnings").show();
+      $("#map").hide();
+    });
+
+    $("#remove-warnings").click(function(e){
+     $("#warnings").hide();
+      $("#map").show();
+    });
+  });
+  </script>
+  
+
+  
+<% end %>
+

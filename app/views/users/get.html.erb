@@ -1,0 +1,26 @@
+<h2>Additional Info</h2>
+
+<p>We're almost there! Please confirm the following information</p>
+<p id="notice"><%= alert %></p>
+
+<%= form_for(@user, { :action => "update" }) do |f| %>
+
+<%= f.error_messages %>
+<div>
+<%= f.label :email %><br />
+<%= f.email_field :email %>
+</div>
+
+<div>
+<%= f.label :phone %><br />
+<%= f.phone_field :phone %>
+</div>
+
+<div><%= f.label 'Notify by SMS' %><br />
+<%= f.check_box :preferred_contact %>
+</div>
+
+<div><%= f.submit "Let's go!" %></div>
+
+
+<% end %>
